@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>toggle button</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+ 
+</head>
+
+<body>
+  <div class="toggle"></div>
+  
+  <script src="script.js"></script>
+</body>
+
+</html>
+//CSS
+html{
+  margin: 0;
+  padding: 0;
+}
+body{
+padding-top: 100px;
+  height: 100vh;
+  display:flex;
+  align-items: centre;
+  justify-content: center;
+  background-image:linear-gradient(to right, #bb56c2,#772260);
+}
+body.dark{
+  background-color: #484747;
+  background-image: none;
+  transition: all 0.3s ease-in-out;
+
+}
+.toggle{
+  height: 130px;
+  width: 300px;
+  background-color: white;
+  position: relative;
+  border-radius: 100px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+.toggle::before{
+  content: "";
+  position: absolute;
+  height: 110px;
+  width: 110px;
+  background: #bb56c2;
+  border-radius: 50%;
+  top: 50%;
+  left: 14px;
+  transform: translate(0%,-50%);
+  transition: all 0.3s ease-in-out;
+}
+.toggle.active::before{
+  background-color: #212121;
+  left: calc(100% - 110px - 14px);
+  
+  
+}
+//JAVASCRIPT//
+const body=document.querySelector("body"),
+ toggle=document.querySelector(".toggle");
+toggle.addEventListener("click",() => {
+  body.classList.toggle("dark");
+});
+
+toggle.addEventListener('click',()=>toggle.classList.toggle("active"));
+
+  
